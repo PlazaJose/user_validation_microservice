@@ -83,7 +83,7 @@ app.post('/cuenta/iniciar', async (req, res) =>{
                     }
                 });
                 console.log("sesion iniciada a: "+hora_inicio.toString());
-                return res.json({ entrada: true, nombre: jugador.get_name()});
+                return res.json({ entrada: true, nombre: jugador.get_name(), player_data:{id_player:id, name:jugador.get_name(), mmr:jugador.get_mmr()}});
             }else{
                 console.log("usuario incorrecto ");
                 return res.json({ entrada: false, nombre: 'usuario o contraseña incorrecta' });
