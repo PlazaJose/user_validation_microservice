@@ -48,7 +48,7 @@ app.get('/cuenta/validar/:id', async (req, res) => {
     const { id } = req.params;
 
     const result_consulta = await consult_user(id);
-    if(result_consulta. result_code == -1){
+    if(result_consulta.result_code == -1){
         return res.status(500).json({ entrada: false, error: result_consulta.data });
     }else if(result_consulta.result_code == 0){
         return res.json({ entrada: true, nombre: result_consulta.data.get_name()});
