@@ -8,6 +8,25 @@ const port = 5101;
 // Middleware to parse JSON
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send(`
+        <html>
+        <head>
+            <title>User BMBR Microservice</title>
+            <style>
+                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+                h1 { color: #007bff; }
+            </style>
+        </head>
+        <body>
+            <h1>Welcome to the title>User BMBR Microservice 🚀</h1>
+            <p>Use the API endpoints to retrieve ranking data.</p>
+            <p>Try: <code>/cuenta/validar/:id</code> </p>
+        </body>
+        </html>
+    `);
+});
+
 function generate_hash(password) {
     const salt = Math.random().toString(36).substring(2,15);
     const hash = Buffer.from(sha512.array(password+salt));
@@ -135,25 +154,6 @@ app.post('/cuenta/crear', async (req, res) => {
     }
   
   });
-
-app.get("/", (req, res) => {
-    res.send(`
-        <html>
-        <head>
-            <title>User BMBR Microservice</title>
-            <style>
-                body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-                h1 { color: #007bff; }
-            </style>
-        </head>
-        <body>
-            <h1>Welcome to the title>User BMBR Microservice 🚀</h1>
-            <p>Use the API endpoints to retrieve ranking data.</p>
-            <p>Try: <code>/cuenta/validar/:id</code> </p>
-        </body>
-        </html>
-    `);
-});
 
 // Start the server
 app.listen(port, () => {
